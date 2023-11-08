@@ -1,36 +1,92 @@
-# ClimateWaver Social Media App Notification Service
+# ClimateWavers Notification System
 
-This repository contains the Notification Service for ClimateWaver, a social media platform focused on climate-related issues. The service is responsible for sending email notifications related to climate alerts and updates to the app users.
+This notification system facilitates the sending of climate-related alerts to registered users based on their last known location. It leverages email notifications for alert dissemination.
 
-## Email Integration
+## Table of Contents
 
-The Notification Service integrates with Gmail to send climate-related notifications to users via email. It utilizes Node.js along with the Nodemailer library to achieve this integration. Environment variables are used to securely store the email credentials and sensitive information.
+- [Overview](#overview)
+- [Setup](#setup)
+- [Code Structure](#code-structure)
+- [Usage](#usage)
+- [Contributing](#contributing)
+- [License](#license)
 
-### Email Service Setup
+## Overview
 
-The `emailService.js` file handles the configuration of the email service and ensures the delivery of climate alerts to the registered users. The `.env` file is used to store sensitive information securely and is excluded from version control.
+The ClimateWavers Notification System employs a series of interconnected modules to handle the process of sending climate-related notifications to users.
 
-### WebSocket Update
+## Setup
 
-In `handlers.js`, the service was updated to trigger email notifications on new connections instead of using WebSocket functionality. The WebSocket configurations in `config.js` remain unchanged to facilitate WebSocket connections.
+1. **Clone Repository**
 
-## Files Modified
+   ```bash
+   git clone https://github.com/Olagold-hackxx/ClimateWavers2.git
 
-1. `emailService.js`: Configuration file for the email service.
-2. `senders.js`: Incorporates the function to send email notifications.
-3. `main.js`: Updated to trigger email notifications for climate-related alerts.
-4. `handlers.js`: Modified to trigger email notifications on new connections.
+Install Dependencies
 
-## Installation
-
-Before running the service, ensure you have Node.js installed. To install the necessary dependencies, run the following command:
-
-```bash
+cd ClimateWavers2/notification-service
 npm install
 
-## Run the Service
+## Environment Variables
 
-To start the Notification Service, use:
+Ensure to set up the following environment variables:
 
-node main.js
+- `EMAIL_USER`: Email service username
+- `EMAIL_PASSWORD`: Email service password
+- `EMAIL_SERVICE`: Email service provider (e.g., Gmail)
+
+Create a `.env` file in the root of the `notification-service` folder and add the environment variables.
+
+## Code Structure
+
+The notification system comprises the following key files:
+
+- `EmailNotificationController.js`
+- `handlers.js`
+- `models.js`
+- `emailService.js`
+- `main.js`
+- `senders.js`
+
+The functionalities of these files are as follows:
+
+- `EmailNotificationController.js`: Handles incoming messages and user locations to dispatch email notifications.
+- `handlers.js`: Manages the connections and triggers notifications.
+- `models.js`: Defines the structure for notification data.
+- `emailService.js`: Manages the service for sending emails.
+- `main.js`: Coordinates the trigger for sending notifications.
+- `senders.js`: Specifies the process of sending email notifications.
+
+## Usage
+
+The system allows for the dispatch of climate-related alerts to users based on their last known location. To utilize the notification system, follow these steps:
+
+1. **Start the Service**
+
+   Run the following command in the `notification-service` directory:
+
+   ```bash
+   npm start
+
+## Connect to the System
+
+Connect to the specified port to start receiving notifications.
+
+## Test the System
+
+To test the system, simulate different scenarios and check the functionality of the email notifications.
+
+## Contributing
+
+Contributions are welcome! Please follow these steps:
+
+1. Fork the repository.
+2. Create a new branch (`git checkout -b feature/awesome-contribution`).
+3. Commit changes (`git commit -am 'Add new feature'`).
+4. Push to the branch (`git push origin feature/awesome-contribution`).
+5. Create a pull request.
+
+## License
+
+This project is licensed under the MIT License.
 
