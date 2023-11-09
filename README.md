@@ -20,7 +20,7 @@ The ClimateWavers Notification System employs a series of interconnected modules
 1. **Clone Repository**
 
    ```bash
-   git clone https://github.com/Olagold-hackxx/ClimateWavers2.git
+   git clone https://github.com/ClimateWavers/Notification-System.git
 
 Install Dependencies
 
