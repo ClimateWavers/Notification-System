@@ -1,13 +1,10 @@
+// routes/emailRoutes.js
 const express = require('express');
-const router = express.Router();
-const chatBotController = require('../controllers/chatBotController');
+const { sendEmailController } = require('../controllers/emailController');
 
-router.post('/chatbot', async (req, res) => {
-  try {
-    await chatBotController.chatBot(req, res);
-  } catch (error) {
-    res.status(500).json({ error: 'Internal server error' });
-  }
-});
+const router = express.Router();
+
+// Route to send an email
+router.post('/send-email', sendEmailController);
 
 module.exports = router;
