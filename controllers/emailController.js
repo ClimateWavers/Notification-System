@@ -1,5 +1,5 @@
 // controllers/emailController.js
-const Email = require('../model/emailModel');
+const Email = require('../models/emailModel');
 
 const sendEmailController = async (req, res) => {
     try {
@@ -13,3 +13,4 @@ const sendEmailController = async (req, res) => {
 };
 
 module.exports = { sendEmailController };
+
