@@ -1,8 +1,8 @@
 // app.js
 const express = require('express');
 const bodyParser = require('body-parser');
-const { triggerEmailNotifications } = require('./handlers');
-const emailRoutes = require('./routes/route');
+const { triggerEmailNotifications } = require('./notification-service/src/handlers'); 
+const emailRoutes = require('./routes/route'); 
 
 const app = express();
 const PORT = process.env.PORT || 3000;
