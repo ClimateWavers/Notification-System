@@ -1,6 +1,6 @@
-require('dotenv').config(); // To access environment variables
-const { User } = require('../models/User'); // Import the User model
-
+// controllers/EmailNotificationController.js
+const { User } = require('../models/User');
+const { generateEmailContent } = require('./ChatGPTController'); // Import ChatGPT controller
 const nodemailer = require('nodemailer');
 
 // Function to handle incoming messages and user location from an API
@@ -9,11 +9,15 @@ async function handleAPIRequest(message, location) {
         // Fetch users from the database based on last known location
         const users = await User.findAll({
             where: { lastLocation: location },
-            attributes: ['email'] // Fetch only email addresses
+            attributes: ['email']
         });
 
-        users.forEach(user => {
-            sendNotificationEmail(user.email, message);
+        users.forEach(async (user) => {
+            // Generate email content using ChatGPT
+            const emailContent = await generateEmailContent(message);
+
+            // Send email notification
+            sendNotificationEmail(user.email, emailContent);
         });
     } catch (error) {
         console.error('Error fetching user data:', error);
@@ -46,6 +50,9 @@ function sendNotificationEmail(userEmail, message) {
     });
 }
 
+// Export the functions
 module.exports = {
-    handleAPIRequest
+    handleAPIRequest,
+    sendNotificationEmail // Exported in case it's needed elsewhere
 };
+

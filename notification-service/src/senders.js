@@ -1,18 +1,16 @@
-// src/senders.js 
+// senders.js 
+const { sendNotificationEmail } = require('./EmailNotificationController');
 
-const EmailService = require('./emailService'); 
-
-function sendEmailNotification(type, message) {
+// Function to send an email notification
+function sendEmailNotification(type, message, recipientEmail) {
   const emailContent = {
-    subject: `ClimateWaver Alert: ${type}`, // Modify subject as needed
-    body: message // The body of the email
+    subject: `ClimateWaver Alert: ${type}`,
+    body: message
   };
 
   // Assuming you have the recipient's email address
-  const recipientEmail = 'user@example.com'; // Replace with the actual recipient's email address
-
-  // Send email notification
-  EmailService.sendEmail(recipientEmail, emailContent);
+  // Send email notification using the consolidated function
+  sendNotificationEmail(recipientEmail, emailContent);
 }
 
 module.exports = { sendEmailNotification };

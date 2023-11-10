@@ -1,36 +1,18 @@
-// emailService.js
+// notification-service/src/emailService.js
+const { sendNotificationEmail } = require('./EmailNotificationController');
 
-require('dotenv').config(); // Load environment variables from .env file
+// Function to send emails using the consolidated function
+async function sendEmail(emailData) {
+  const { to, subject, text } = emailData;
 
-const nodemailer = require('nodemailer');
-
-// Create a Nodemailer transporter using Gmail service
-const transporter = nodemailer.createTransport({
-  service: 'gmail',
-  auth: {
-    user: process.env.EMAIL_USER,
-    pass: process.env.EMAIL_PASSWORD
+  try {
+    // Send email using the consolidated function
+    await sendNotificationEmail(to, { subject, body: text });
+    // You may choose to return some information or handle success in other ways
+    return { success: true, message: 'Email sent successfully' };
+  } catch (error) {
+    throw error;
   }
-});
-
-// Function to send emails
-function sendEmail(recipient, emailContent) {
-  const mailOptions = {
-    from: process.env.EMAIL_USER,
-    to: recipient,
-    subject: emailContent.subject,
-    text: emailContent.body
-  };
-
-  // Send the email
-  transporter.sendMail(mailOptions, function(error, info) {
-    if (error) {
-      console.error('Email sending error:', error);
-    } else {
-      console.log('Email sent:', info.response);
-    }
-  });
 }
 
-// Export the function to send emails
 module.exports = { sendEmail };

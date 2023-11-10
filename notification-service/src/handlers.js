@@ -1,16 +1,18 @@
+// notification-service/src/handlers.js
 const EmailService = require('./emailService');
 const { Notification } = require('./models'); // Import Notification model
 
-function handleConnection(socket) {
-  console.log('Client connected');
+// Remove or comment out the handleConnection function
+// function handleConnection(socket) {
+//   console.log('Client connected');
   
-  // Assuming you have a trigger to send email notifications
-  triggerEmailNotifications();
+//   // Assuming you have a trigger to send email notifications
+//   triggerEmailNotifications();
 
-  socket.on('close', () => {
-    console.log('Client disconnected');
-  });
-}
+//   socket.on('close', () => {
+//     console.log('Client disconnected');
+//   });
+// }
 
 // Function to trigger email notifications
 function triggerEmailNotifications() {
@@ -48,7 +50,6 @@ function fetchNotifications() {
 // Function to fetch user email based on user ID
 function getUserEmail(userId) {
   // Implement logic to fetch user-specific email from  database 
-  // Replace this placeholder code with the actual email retrieval process
   const usersEmails = {
     userID_1: 'user1@example.com',
     // Add more user-email pairs if needed
@@ -57,4 +58,4 @@ function getUserEmail(userId) {
   return usersEmails[userId];
 }
 
-module.exports = { handleConnection };
+module.exports = { triggerEmailNotifications };
