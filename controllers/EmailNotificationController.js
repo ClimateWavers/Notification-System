@@ -55,4 +55,3 @@ module.exports = {
     handleAPIRequest,
     sendNotificationEmail // Exported in case it's needed elsewhere
 };
-
