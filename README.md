@@ -41,21 +41,27 @@ Create a `.env` file in the root of the `notification-service` folder and add th
 
 The notification system comprises the following key files:
 
-- `EmailNotificationController.js`
-- `handlers.js`
-- `models.js`
-- `emailService.js`
-- `main.js`
-- `senders.js`
 
-The functionalities of these files are as follows:
+- **`app.js`:**
+  - Main entry point.
+  - Initializes and starts the Express server.
+  - Defines routes and server behavior.
 
-- `EmailNotificationController.js`: Handles incoming messages and user locations to dispatch email notifications.
-- `handlers.js`: Manages the connections and triggers notifications.
-- `models.js`: Defines the structure for notification data.
-- `emailService.js`: Manages the service for sending emails.
-- `main.js`: Coordinates the trigger for sending notifications.
-- `senders.js`: Specifies the process of sending email notifications.
+- **`controllers/`:**
+  - Contains controllers for specific functionalities.
+  - Handles HTTP requests, input validation, and response generation.
+
+- **`models/`:**
+  - Defines data models.
+  - Encapsulates data schema and operations.
+
+- **`routes/`:**
+  - Defines API routes.
+  - Separates HTTP layer, delegates logic to controllers.
+
+- **`notification-service/`:**
+  - Handles email notifications.
+  - Centralizes email-related functionality.
 
 ## Usage
 
@@ -63,10 +69,23 @@ The system allows for the dispatch of climate-related alerts to users based on t
 
 1. **Start the Service**
 
-   Run the following command in the `notification-service` directory:
+   Run the following command in the `notification-service` directory to start the server:
 
-   ```bash
-   npm start
+   node app.js
+
+### Accessing the App
+
+The app will be accessible at [http://localhost:3000](http://localhost:3000).
+
+
+### Triggering Email Notifications
+
+To manually trigger email notifications, make a POST request:
+
+```bash
+curl -X POST http://localhost:3000/trigger-email-notifications
+
+
 
 ## Connect to the System
 
