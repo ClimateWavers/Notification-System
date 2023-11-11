@@ -4,12 +4,27 @@ This notification system facilitates the sending of climate-related alerts to re
 
 ## Table of Contents
 
-- [Overview](#overview)
-- [Setup](#setup)
-- [Code Structure](#code-structure)
-- [Usage](#usage)
-- [Contributing](#contributing)
-- [License](#license)
+- [ClimateWavers Notification System](#climatewavers-notification-system)
+  - [Table of Contents](#table-of-contents)
+  - [Overview](#overview)
+  - [Setup](#setup)
+    - [Clone Repository](#1-clone-repository)
+    - [Install Dependencies](#install-dependencies)
+    - [Environment Variables](#environment-variables)
+  - [Code Structure](#code-structure)
+    - [app.js](#appjs)
+    - [controllers/](#controllers)
+    - [models/](#models)
+    - [routes/](#routes)
+    - [notification-service/](#notification-service)
+  - [Usage](#usage)
+    - [Start the Service](#1-start-the-service)
+    - [Accessing the App](#accessing-the-app)
+    - [Triggering Email Notifications](#triggering-email-notifications)
+  - [Connect to the System](#connect-to-the-system)
+  - [Test the System](#test-the-system)
+  - [Contributing](#contributing)
+  - [License](#license)
 
 ## Overview
 
@@ -91,17 +106,16 @@ curl -X POST http://localhost:3000/trigger-email-notifications
 
 
 
+
 ### Connect to the System
 
 Connect to the specified port to start receiving notifications.
 
-
-## Test the System
+### Test the System
 
 To test the system, simulate different scenarios and check the functionality of the email notifications.
 
-
-## Contributing
+### Contributing
 
 Contributions are welcome! Please follow these steps:
 
@@ -111,8 +125,7 @@ Contributions are welcome! Please follow these steps:
 4. Push to the branch (`git push origin feature/awesome-contribution`).
 5. Create a pull request.
 
-
-## License
+### License
 
 This project is licensed under the MIT License.
 
