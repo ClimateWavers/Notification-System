@@ -82,17 +82,19 @@ The notification system comprises the following key files:
 
 The system allows for the dispatch of climate-related alerts to users based on their last known location. To utilize the notification system, follow these steps:
 
-1. **Start the Service**
+### 1. Start the Service
 
-   Run the following command in the `notification-service` directory to start the server:
+Run the following command in the `notification-service` directory to start the server:
 
-   node app.js
-
+```bash
+node app.js
 
 
 ### Accessing the App
 
 The app will be accessible at [http://localhost:3000](http://localhost:3000).
+
+
 
 
 
