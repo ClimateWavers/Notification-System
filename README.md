@@ -73,9 +73,12 @@ The system allows for the dispatch of climate-related alerts to users based on t
 
    node app.js
 
+
+
 ### Accessing the App
 
 The app will be accessible at [http://localhost:3000](http://localhost:3000).
+
 
 
 ### Triggering Email Notifications
@@ -87,13 +90,16 @@ curl -X POST http://localhost:3000/trigger-email-notifications
 
 
 
-## Connect to the System
+
+### Connect to the System
 
 Connect to the specified port to start receiving notifications.
+
 
 ## Test the System
 
 To test the system, simulate different scenarios and check the functionality of the email notifications.
+
 
 ## Contributing
 
@@ -104,6 +110,7 @@ Contributions are welcome! Please follow these steps:
 3. Commit changes (`git commit -am 'Add new feature'`).
 4. Push to the branch (`git push origin feature/awesome-contribution`).
 5. Create a pull request.
+
 
 ## License
 
