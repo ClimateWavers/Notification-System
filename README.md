@@ -48,6 +48,9 @@ Follow these steps to set up and run the Notification and Alerting System micros
 5. **API Documentation:**
    Access the API documentation at [http://localhost:3000/docs](http://localhost:3000/docs) for details on available endpoints and usage.
 
+## Deployment
+
+
 ## Contributing
 
 We welcome contributions to enhance the functionality and features of the Notification and Alerting System. Feel free to open issues or submit pull requests.
