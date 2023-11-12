@@ -3,7 +3,7 @@ const bodyParser = require('body-parser');
 const emailRoutes = require('./routes/emailRoutes');
 const logger = require('./logger');
 
-const port = process.env.PORT || 3000;
+const port = process.env.PORT || 3002;
 
 
 const app = express();
