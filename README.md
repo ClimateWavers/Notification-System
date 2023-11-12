@@ -1,133 +1,95 @@
-# ClimateWavers Notification System
-
-This notification system facilitates the sending of climate-related alerts to registered users based on their last known location. It leverages email notifications for alert dissemination.
-
-## Table of Contents
-
-- [ClimateWavers Notification System](#climatewavers-notification-system)
-  - [Table of Contents](#table-of-contents)
-  - [Overview](#overview)
-  - [Setup](#setup)
-    - [Clone Repository](#1-clone-repository)
-    - [Install Dependencies](#install-dependencies)
-    - [Environment Variables](#environment-variables)
-  - [Code Structure](#code-structure)
-    - [app.js](#appjs)
-    - [controllers/](#controllers)
-    - [models/](#models)
-    - [routes/](#routes)
-    - [notification-service/](#notification-service)
-  - [Usage](#usage)
-    - [Start the Service](#1-start-the-service)
-    - [Accessing the App](#accessing-the-app)
-    - [Triggering Email Notifications](#triggering-email-notifications)
-  - [Connect to the System](#connect-to-the-system)
-  - [Test the System](#test-the-system)
-  - [Contributing](#contributing)
-  - [License](#license)
+# Notification and Alerting System Microservice for Climate Wavers
 
 ## Overview
 
-The ClimateWavers Notification System employs a series of interconnected modules to handle the process of sending climate-related notifications to users.
+Welcome to the Notification and Alerting System microservice for Climate Wavers, an AI-driven disaster response platform. This microservice is designed to deliver timely and personalized alerts to users based on their last known location, providing crucial information about impending disasters.
 
-## Setup
+## Features
 
-1. **Clone Repository**
+### 1. Disaster Alerts
 
+Receive real-time alerts about potential disasters, including but not limited to hurricanes, floods, wildfires, and more. Alerts messages are generated from chatGPT based on predicted disaster type and model analysis
+
+### 2. Location-Based Notifications
+
+Tailor notifications based on the user's last known location, ensuring relevance and accuracy in disaster alerts.
+
+### 3. Personalized Settings
+
+Allow users to customize their notification preferences, including the types of disasters they want to be alerted about and the frequency of notifications.
+
+### 4. Emergency Contacts
+
+Provide a feature for users to add emergency contacts who will also receive alerts on their behalf, ensuring a network of safety.
+
+## Getting Started
+
+Follow these steps to set up and run the Notification and Alerting System microservice:
+
+1. **Clone the Repository:**
    ```bash
-   git clone https://github.com/ClimateWavers/Notification-System.git
+   git clone https://github.com/climatewavers/Notification-System.git
+   ```
 
-Install Dependencies
+2. **Install Dependencies:**
+   ```bash
+   cd climate-wavers-notifications
+   npm install
+   ```
 
-cd ClimateWavers2/notification-service
-npm install
+3. **Configuration:**
+   - Configure the microservice settings, including API keys for geolocation services and disaster prediction models.
 
-## Environment Variables
+4. **Run the Microservice:**
+   ```bash
+   npm start
+   ```
 
-Ensure to set up the following environment variables:
+5. **API Documentation:**
+   Access the API documentation at [http://localhost:3000/docs](http://localhost:3000/docs) for details on available endpoints and usage.
 
-- `EMAIL_USER`: Email service username
-- `EMAIL_PASSWORD`: Email service password
-- `EMAIL_SERVICE`: Email service provider (e.g., Gmail)
+## Deployment
+We provide three different methods for deploying this microservice to openshift clusters.
+### Import Git Repositoy (Recommended)
+Use the import git repository feature on openshift console.
+- Navigate to Add page in the Developer console on openshift
+- Select Dockerfile strategy
+- Deployment type should be Deployment Config
+- Secure routes
+- Supply the environment variables after deployment
+  
+### Automated Command line Deployment
+Using the scripts provided in `automate_development` folder, simplifies deployment. To use the scripts, docker and oc must be installed.
 
-Create a `.env` file in the root of the `notification-service` folder and add the environment variables.
+#### Build and push image
+You can replace the image repository in the scripts `build.sh` in `automate_deployment` or use the repository we provided.
+  ```bash
+   automate_deployment/./build.sh
+   ```
+#### Deploy 
+If the image repository was changed when building, update the `development.yaml` file in `k8s` folder with your image repository
+  ```bash
+   automate_deployment/./deploy.sh
+   ```
 
-## Code Structure
-
-The notification system comprises the following key files:
-
-
-- **`app.js`:**
-  - Main entry point.
-  - Initializes and starts the Express server.
-  - Defines routes and server behavior.
-
-- **`controllers/`:**
-  - Contains controllers for specific functionalities.
-  - Handles HTTP requests, input validation, and response generation.
-
-- **`models/`:**
-  - Defines data models.
-  - Encapsulates data schema and operations.
-
-- **`routes/`:**
-  - Defines API routes.
-  - Separates HTTP layer, delegates logic to controllers.
-
-- **`notification-service/`:**
-  - Handles email notifications.
-  - Centralizes email-related functionality.
-
-## Usage
-
-The system allows for the dispatch of climate-related alerts to users based on their last known location. To utilize the notification system, follow these steps:
-
-### 1. Start the Service
-
-Run the following command in the `notification-service` directory to start the server:
-
-```bash
-node app.js
-
-
-### Accessing the App
-
-The app will be accessible at [http://localhost:3000](http://localhost:3000).
+### Tekton pipeline deployment script
+Deploy with tekton with the pipeline deployment script in `automated_deployment` directory. Setup environment variabes after deployment
+   ```bash
+   automate_deployment/./tekton_pipeline.sh
+   ```
 
 
 
+## Contributing
 
+We welcome contributions to enhance the functionality and features of the Notification and Alerting System. Feel free to open issues or submit pull requests.
 
-### Triggering Email Notifications
+## License
 
-To manually trigger email notifications, make a POST request:
+This microservice is licensed under the [MIT License](LICENSE), allowing for both personal and commercial use.
 
-```bash
-curl -X POST http://localhost:3000/trigger-email-notifications
+## Support
 
+For any questions or issues, please contact our support team at support@climatewavers.com.
 
-
-
-
-### Connect to the System
-
-Connect to the specified port to start receiving notifications.
-
-### Test the System
-
-To test the system, simulate different scenarios and check the functionality of the email notifications.
-
-### Contributing
-
-Contributions are welcome! Please follow these steps:
-
-1. Fork the repository.
-2. Create a new branch (`git checkout -b feature/awesome-contribution`).
-3. Commit changes (`git commit -am 'Add new feature'`).
-4. Push to the branch (`git push origin feature/awesome-contribution`).
-5. Create a pull request.
-
-### License
-
-This project is licensed under the MIT License.
-
+Thank you for contributing to Climate Wavers, and together, let's build a safer and more resilient world! 🌍🌊🔔
